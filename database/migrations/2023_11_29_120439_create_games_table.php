@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('genre');
-            $table->tinyInteger('ftp_support');
+            $table->boolean('ftp_support');
             $table->foreignId('user_id')->unique()->constrained();
             $table->timestamps();
         });

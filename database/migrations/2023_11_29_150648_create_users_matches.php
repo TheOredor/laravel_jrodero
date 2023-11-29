@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('users_matches', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
             $table->foreignId('user_id')->unique()->constrained();
             $table->foreignId('match_id')->unique()->constrained();
+            $table->boolean('owner');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('users_matches');
     }
 };
