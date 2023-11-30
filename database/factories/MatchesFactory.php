@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Game;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,12 @@ class MatchesFactory extends Factory
      */
     public function definition(): array
     {
+        $game = Game::factory()->create();
         return [
-            //
+            'name' => $this->faker->sentence(3),
+            'game_id' => $game->id,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
